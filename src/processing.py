@@ -9,4 +9,4 @@ def sort_by_date(operations_info: list, increase: bool = True) -> list:
     """
     Возвращает новый список, отсортированный по дате в зависимости от значения параметра increase
     """
-    return sorted(operations_info, key=lambda operation: operation["date"], reverse=not increase)
+    return sorted(operations_info, key=lambda operation: operation["date"], reverse=increase)

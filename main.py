@@ -15,5 +15,5 @@ if __name__ == "__main__":
 
     print(mask_account_card(bank_card_or_account_number))
     print(get_date(str(datetime.datetime.now())))
-    print(filter_by_state(banking_operations_info, state="CANCELED"))
+    print(filter_by_state(banking_operations_info))
     print(sort_by_date(banking_operations_info))

@@ -1,5 +1,5 @@
 import datetime
-
+import pprint
 from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
 
@@ -15,5 +15,5 @@ if __name__ == "__main__":
 
     print(mask_account_card(bank_card_or_account_number))
     print(get_date(str(datetime.datetime.now())))
-    print(filter_by_state(banking_operations_info))
-    print(sort_by_date(banking_operations_info))
+    pprint.pprint(filter_by_state(banking_operations_info), width=50, indent=4)
+    pprint.pprint(sort_by_date(banking_operations_info), width=50, indent=4)

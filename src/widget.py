@@ -30,7 +30,9 @@ def get_date(date_and_time: str) -> str:
     """ "возвращает строку с датой в формате "ДД.ММ.ГГГГ" ("11.03.2024")"""
     if type(date_and_time) != str:
         raise ValueError("Неправильный формат даты")
-    # digits = [date_and_time[8:10], date_and_time[5:7], date_and_time[:4]]
-
+    digits = [date_and_time[8:10], date_and_time[5:7], date_and_time[:4]]
+    digits_str = "".join(digits)
+    if not digits_str.isdigit():
+        raise ValueError("Неправильный формат даты")
     return f"{date_and_time[8:10]}.{date_and_time[5:7]}.{date_and_time[:4]}"
 # "2024-03-11T02:26:18.671407"

@@ -10,5 +10,5 @@ def get_mask_account(account_number: str|int) -> str:
     """Маскирует номер банковского счета."""
     account_number_str = str(account_number)
     if not account_number_str.isdigit() or len(account_number_str) != 20:
-        raise ValueError("Неправильно введен номер карты")
+        raise ValueError("Неправильно введен номер счёта")
     return "**" + account_number_str[-4:]

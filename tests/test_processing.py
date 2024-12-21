@@ -65,26 +65,23 @@ def test_sort_by_date(banking_transactions: list, decreasing_meaning: bool, expe
     assert sort_by_date(banking_transactions, decreasing=decreasing_meaning) == expected
 
 
-# @pytest.mark.parametrize("banking_transactions_wrong_format",
-#     [
-#         {'date': '', 'id': 41428829, 'state': 'EXECUTED'},
-#         {'id': 594226727, 'state': 'CANCELED'}
-#     ])
+@pytest.mark.parametrize("banking_transactions_wrong_format",
+    [
+{'date': '-06-30T02:08:58.425572', 'id': 939719570, 'state': 'EXECUTED'},
+        {'date': '2018--14T08:10:00.216451', 'id': 615064591, 'state': 'CANCELED'},
+        {'date': '2018-10-T08:21:33.419441', 'id': 615064591, 'state': 'CANCELED'},
+        {'date': '2018-09-1221:27:25.241689', 'id': 594226727, 'state': 'CANCELED'},
+        {'date': '2019-07-03T', 'id': 41428829, 'state': 'EXECUTED'},
+        {'date': 'T08:55:30512364', 'id': 41428829, 'state': 'EXECUTED'},
+        {'date': '2019-027-03518:35:29.512364', 'id': 41428829, 'state': 'EXECUTED'},
+        {'date': '', 'id': 41428829, 'state': 'EXECUTED'},
+        {'id': 594226727, 'state': 'CANCELED'}
+    ])
 
-# def test_sort_by_date(banking_transactions_wrong_format: list) -> None:
-#     """"
-#     Проверяет работу функции sort_by_date с некорректными
-#      или нестандартными форматами дат
-#     """
-#     with pytest.raises(ValueError):
-#         sort_by_date(banking_transactions_wrong_format)
-#
-# # {'date': '-06-30T02:08:58.425572', 'id': 939719570, 'state': 'EXECUTED'},
-# #         {'date': '2018--14T08:10:00.216451', 'id': 615064591, 'state': 'CANCELED'},
-# #         {'date': '2018-10-T08:21:33.419441', 'id': 615064591, 'state': 'CANCELED'},
-# #         {'date': '2018-09-1221:27:25.241689', 'id': 594226727, 'state': 'CANCELED'},
-# #         {'date': '2019-07-03T', 'id': 41428829, 'state': 'EXECUTED'},
-# #         {'date': 'T08:55:30512364', 'id': 41428829, 'state': 'EXECUTED'},
-# #         {'date': '2019-027-03518:35:29.512364', 'id': 41428829, 'state': 'EXECUTED'},
-# #         {'date': '', 'id': 41428829, 'state': 'EXECUTED'},
-# #         {'id': 594226727, 'state': 'CANCELED'}
+def test_sort_by_date(banking_transactions_wrong_format: list) -> None:
+    """"
+    Проверяет работу функции sort_by_date с некорректными
+     или нестандартными форматами дат
+    """
+    with pytest.raises(ValueError):
+        sort_by_date(banking_transactions_wrong_format)

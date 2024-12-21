@@ -41,4 +41,3 @@ def get_date(date_and_time: str) -> str:
         raise ValueError("Неправильный формат даты")
 
     return f"{date_and_time[8:10]}.{date_and_time[5:7]}.{date_and_time[:4]}"
-# "2024-03-11T02:26:18.671407"

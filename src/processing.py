@@ -1,5 +1,3 @@
-from typing import List, Any
-
 from src.widget import get_date
 
 
@@ -23,7 +21,7 @@ def sort_by_date(banking_transactions: list, decreasing: bool = True) -> list:
     Возвращает новый список, отсортированный по дате в зависимости от значения параметра increase
     """
     for bank_operation in banking_transactions:
-        if not "date" in bank_operation:
+        if "date" not in bank_operation:
             raise ValueError("Отсутствует ключ date в одном из словарей из списка")
 
     return sorted(banking_transactions, key=lambda transaction: get_date(transaction["date"]), reverse=decreasing)

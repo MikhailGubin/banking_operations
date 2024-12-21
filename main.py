@@ -1,11 +1,10 @@
-import datetime
 import pprint
 from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
 
 if __name__ == "__main__":
 
-    bank_card_or_account_number = input("Введите номер банковской карты или счета")
+    bank_card_or_account_number = "Maestro 1596837868705199"
     banking_operations_info = [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -16,7 +15,7 @@ if __name__ == "__main__":
     ]
 
     print(mask_account_card(bank_card_or_account_number))
-    print(get_date(str(datetime.datetime.now())))
+    print(get_date("2019-07-03T18:35:29.512364"))
 
     pprint.pprint(filter_by_state(banking_operations_info), width=85, indent=4)
     pprint.pprint(sort_by_date(banking_operations_info, decreasing=False), width=85, indent=4)

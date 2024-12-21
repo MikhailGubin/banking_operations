@@ -52,20 +52,30 @@ def test_mask_account_card_wrong_format(account_card_number: str) -> None:
 
 @pytest.mark.parametrize("date_and_time, expected",
 [("2024-03-11T02:26:18.671407", "11.03.2024"),
-("2002-05-21T00:13:12", "21.05.2002"),
-("2013-11-18T07:28:44.56", "18.11.2013")])
+("2002-05-21T00:13:12.632474", "21.05.2002"),
+("2013-11-18T07:28:44.568762", "18.11.2013")])
 def test_get_date(date_and_time: str, expected: str) -> None:
     """"
     Проверяет работу функции get_date
     """
     assert get_date(date_and_time) == expected
 
-def test_get_empty_date() -> None:
+
+@pytest.mark.parametrize("date_and_time",
+[("2024-03-11T02:26:18"),
+("2002-05-21T00:13"),
+("2013411-18T07:28:44.568762"),
+("2013-11-18L07:28:44.568762"),
+("2013-11-18T07:28:44:568762"),
+("2013-11:18T07:28:44.568762"),
+("")])
+def test_get_empty_date_wrong_format(date_and_time: str) -> None:
         """"
-        Проверяет работу функции get_date
+        Проверяет работу функции get_date при различных
+        неправильных входных форматах
         """
         with pytest.raises(ValueError):
-            get_date("")
+            get_date(date_and_time)
 
     # Проверка работы функции на различных входных форматах даты,
     # включая граничные случаи и нестандартные строки с датами.

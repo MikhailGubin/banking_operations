@@ -26,8 +26,8 @@ def test_mask_account_card(account_card_number: str, expected: str) -> None:
 def test_mask_account_card_wrong_length(account_card_number: str) -> None:
     """"
     Проверяет работу функции mask_account_card,
-    когда на вход подаётся номер карты/счёта разной длины
-    или когда номер отсутствует
+    когда на вход подаётся номер карты/счёта разной
+    длины или когда номер отсутствует
     """
     with pytest.raises(ValueError):
         mask_account_card(account_card_number)
@@ -43,8 +43,8 @@ def test_mask_account_card_wrong_length(account_card_number: str) -> None:
 def test_mask_account_card_wrong_format(account_card_number: str) -> None:
     """"
     Проверяет работу функции mask_account_card,
-    когда на вход подаётся номер карты/счёта разной длины
-    или когда номер отсутствует
+    когда на вход подаётся номер карты/счёта
+    неправильного формата
     """
     with pytest.raises(ValueError):
         mask_account_card(account_card_number)
@@ -76,8 +76,3 @@ def test_get_empty_date_wrong_format(date_and_time: str) -> None:
         """
         with pytest.raises(ValueError):
             get_date(date_and_time)
-
-    # Проверка работы функции на различных входных форматах даты,
-    # включая граничные случаи и нестандартные строки с датами.
-
-    # Проверка, что функция корректно обрабатывает входные строки, где отсутствует дата

@@ -1,6 +1,6 @@
 import pytest
 
-from src.generators import filter_by_currency, transaction_descriptions
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
 
 def test_filter_by_currency(transactions_for_generate: list, currency: str = "USD") -> None:
@@ -75,9 +75,53 @@ def test_filter_by_currency_empty_list() -> None:
 
 def test_filter_by_no_currency_in_list(transactions_for_generate: list, currency: str = "EURO") -> None:
     """"
-    Проверяет, что функция filter_by_currency корректно
-    работает при передаче ей списка, где нет заданной
-    валюты
+    Проверяет, что функция-генератор filter_by_currency
+    корректно работает при передаче ей списка, где нет
+    заданной валюты
     """
     no_necessary_transaction = filter_by_currency(transactions_for_generate, currency)
     assert next(no_necessary_transaction) == "Транзакции в заданной валюте отсутствуют"
+
+def test_transaction_descriptions(transactions_for_generate: list) -> str:
+    """"
+    Проверяет работу генератора transaction_descriptions
+    """
+    descriptions = transaction_descriptions(transactions_for_generate)
+    assert next(descriptions) == "Перевод организации"
+    assert next(descriptions) == "Перевод со счета на счет"
+    assert next(descriptions) == "Перевод со счета на счет"
+
+def test_no_transaction_descriptions(transactions_for_generate: list) -> str:
+    """"
+    Проверяет работу функции-генератора
+    transaction_descriptions при передаче ей пустого
+    списка
+    """
+    descriptions = transaction_descriptions([])
+    assert next(descriptions) == "Пустой список транзакций"
+
+
+@pytest.mark.parametrize(
+    "start, stop, expected",
+    [
+        (1111111111111110, 1111111111111115, ["1111 1111 1111 1111"
+                                              "1111 1111 1111 1112"
+                                              "1111 1111 1111 1113"
+                                              "1111 1111 1111 1114"
+                                              "1111 1111 1111 1115"]),
+        (10, 15, "0000 0000 0000 0011"
+                 "0000 0000 0000 0012"
+                 "0000 0000 0000 0013"
+                 "0000 0000 0000 0014"
+                 "0000 0000 0000 0015"),
+    ],
+)
+def test_card_number_generator(start: int, stop: int, expected: list) -> None:
+    """
+    Проверяет работы функции-генератора
+    card_number_generator
+    """
+    card_number = card_number_generator(start, stop)
+
+    for index in range(start - stop):
+        assert next(card_number) == expected[index]

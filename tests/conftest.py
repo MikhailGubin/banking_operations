@@ -34,6 +34,7 @@ def banking_transactions_no_state() -> list:
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
     ]
 
+
 @pytest.fixture
 def transactions_for_generate() -> list:
     return [

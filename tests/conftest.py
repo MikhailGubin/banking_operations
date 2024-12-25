@@ -53,21 +53,6 @@ def transactions_for_generate() -> list:
             "to": "Счет 11776614605963066702"
         },
         {
-            "id": 142264268,
-            "state": "EXECUTED",
-            "date": "2019-04-04T23:20:05.206878",
-            "operationAmount": {
-                "amount": "79114.93",
-                "currency": {
-                    "name": "USD",
-                    "code": "USD"
-                }
-            },
-            "description": "Перевод со счета на счет",
-            "from": "Счет 19708645243227258542",
-            "to": "Счет 75651667383060284188"
-        },
-        {
             "id": 659569852,
             "state": "EXECUTED",
             "date": "2021-05-06T13:41:05.878206",
@@ -81,5 +66,20 @@ def transactions_for_generate() -> list:
             "description": "Перевод со счета на счет",
             "from": "Maestro 1596837868705199",
             "to": "Visa Classic 6831982476737658"
+        },
+        {
+            "id": 142264268,
+            "state": "EXECUTED",
+            "date": "2019-04-04T23:20:05.206878",
+            "operationAmount": {
+                "amount": "79114.93",
+                "currency": {
+                    "name": "USD",
+                    "code": "USD"
+                }
+            },
+            "description": "Перевод со счета на счет",
+            "from": "Счет 19708645243227258542",
+            "to": "Счет 75651667383060284188"
         }
     ]

@@ -46,11 +46,12 @@ def card_number_generator(start: int, stop: int) -> str:
     """
     if start > stop:
         start, stop = stop, start
-
+    elif start == stop:
+        yield "Начало и конец диапазона совпадают"
     if start < 1:
         yield "Диапазон чисел меньше 0"
     elif stop > 9999999999999999:
-        yield "Диапазон чисел выше верхней границы"
+        yield "Диапазон чисел вышел верхнюю границу"
     else:
         for number in range(start, stop+1):
             card_number = "0"*(16 - len(str(number))) + str(number)

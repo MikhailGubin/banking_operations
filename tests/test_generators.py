@@ -125,3 +125,21 @@ def test_card_number_generator(start: int, stop: int, expected: list) -> None:
 
     for index in range(start - stop):
         assert next(card_number) == expected[index]
+
+
+@pytest.mark.parametrize(
+    "start, stop, expected",
+    [
+        (-1, 10, "Диапазон чисел меньше 0"),
+        (10, -1, "Диапазон чисел меньше 0"),
+        (1, 1, "Начало и конец диапазона совпадают"),
+        (999999999999999, 99999999999999999, "Диапазон чисел вышел верхнюю границу")
+    ],
+)
+def test_card_number_generator_wrong_cases(start: int, stop: int, expected: list) -> None:
+    """
+    Проверяет работы функции-генератора
+    card_number_generator
+    """
+    card_number = card_number_generator(start, stop)
+    assert next(card_number) == expected

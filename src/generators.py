@@ -1,6 +1,3 @@
-from src.masks import get_mask_card_number
-
-
 def filter_by_currency(transactions_list: list, currency: str = "USD") -> dict | str:
     """ "
     Принимает на вход список словарей, представляющих транзакции,

@@ -1,10 +1,9 @@
 import pprint
 
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+from src.date_for_main import bank_card_or_account_number, banking_operations_info, transactions_for_generate
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
-from src.date_for_main import bank_card_or_account_number, banking_operations_info, transactions_for_generate
-
 
 if __name__ == "__main__":
 

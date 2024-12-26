@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     usd_transactions = filter_by_currency(transactions_for_generate, "USD")
     for _ in range(2):
-        print(next(usd_transactions))
+        pprint.pprint(next(usd_transactions), width=85, indent=4)
 
     descriptions = transaction_descriptions(transactions_for_generate)
     for _ in range(3):

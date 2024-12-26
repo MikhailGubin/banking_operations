@@ -2,7 +2,7 @@ def filter_by_currency(transactions_list: list, currency: str = "USD") -> dict |
     """ "
     Принимает на вход список словарей, представляющих транзакции,
     возвращает итератор, который поочередно выдает транзакции
-    с заданной валютой SupportsNext[_T]
+    с заданной валютой
     """
     amount_transactions = 0
 
@@ -41,8 +41,7 @@ def transaction_descriptions(transactions_dict: list) -> str:
 def card_number_generator(start: int, stop: int) -> str:
     """
     Выдает номера банковских карт в формате
-    XXXX XXXX XXXX XXXX, где
-    X — цифра номера карты
+    XXXX XXXX XXXX XXXX, где X — цифра номера карты
     """
     if start > stop:
         start, stop = stop, start

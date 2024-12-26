@@ -22,8 +22,5 @@ if __name__ == "__main__":
     for _ in range(3):
         print(next(descriptions))
 
-    start = 1
-    stop = 5
-    new_card_number = card_number_generator(start, stop)
-    for index in range(stop - start + 1):
-        print(next(new_card_number))
+    for card_number in card_number_generator(11, 20):
+        print(card_number)

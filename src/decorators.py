@@ -1,40 +1,47 @@
-import pytest
+import os
+from functools import wraps
+from time import time
+from typing import Any, Optional, Callable
 
-def log(filename=None):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
+
+
+def log(filename: Optional[str] = None) -> Callable:
+    """
+    Логироует начало и конец выполнения функции, а также ее результаты
+    или возникшие ошибки
+    """
+    def decorator(func: Any) -> Any:
+        @wraps(func)
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
+                time_start = time()
                 result = func(*args, **kwargs)
-                if filename:
-                    with open(f'{filename}.txt', 'w', encoding='utf-8') as file:
-                        file.write(f"{func.__name__} ok\n")
-                else:
-                    print(f"{func.__name__} ok")
+                time_stop = time()
 
-                return result
             except Exception as e:
-                if filename:
-                    with open(f'{filename}.txt', 'w', encoding='utf-8') as file:
-                        file.write(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}\n")
-                else:
-                    print(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}")
+                message = (f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}\n"
+                           f"start - {time_start}; stop - {time_stop}")
 
+            else:
+                message = f"{func.__name__} ok, result: {result}\nstart - {time_start}; stop - {time_stop}"
+            if filename:
+                with open(f"{filename}.txt", 'w', encoding='utf-8') as file:
+                    file.write(message + "\n")
+            else:
+                print(message)
+
+            return result
         return wrapper
     return decorator
 
 @log(filename=None)
 def my_function(x, y):
+    """
+    Складывает два числа
+    """
     return x + y
 
 if __name__ == "__main__":
     result = my_function(1, 2)
     assert result == 3
 
-# my_function(1, 2)
-# Ожидаемый вывод в лог-файл
-# mylog.txt
-#  при успешном выполнении:
-# my_function ok
-# Ожидаемый вывод при ошибке:
-# my_function error: тип ошибки. Inputs: (1, 2), {}
-# Где тип ошибки заменяется на текст ошибки.

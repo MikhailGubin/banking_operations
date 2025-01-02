@@ -167,6 +167,7 @@ for index in range(5):
 ##### Пример использования функции:
 
 ```commandline
+python
 for card_number in card_number_generator(1, 5):
     print(card_number)
 
@@ -175,6 +176,38 @@ for card_number in card_number_generator(1, 5):
     0000 0000 0000 0003
     0000 0000 0000 0004
     0000 0000 0000 0005
+```
+9. #### Декоратор log 
+##### Описание:
+    автоматически логирует начало и конец выполнения функции, а 
+    также ее результаты или возникшие ошибки. Декоратор принимает
+    необязательный аргумент filename, который определяет, куда 
+    будут записываться логи (в файл или в консоль).
+    Логирование должно включает:
+    - Имя функции и результат выполнения при успешной операции.
+    - Имя функции, тип возникшей ошибки и входные параметры, если
+      выполнение функции привело к ошибке. 
+##### Пример использования функции:
+
+```commandline
+python
+@log(filename="function_log")
+def summ_two_numbers(x: int | float, y: int | float) -> int | float:
+    """
+    Складывает два числа
+    """
+    return x + y
+    
+summ_two_numbers(1, 2)
+summ_two_numbers(1, "2")
+
+#Пример логов в файле function_log.txt
+
+summ_two_numbers ok, result: 3
+start - 2025-01-02 14:32:36.649767; stop - 2025-01-02 14:32:36.649771
+
+summ_two_numbers error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
 ```
 
 ---

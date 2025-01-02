@@ -80,6 +80,4 @@ def test_log_message(capsys: Any) -> None:
 
     summ_numbers(1, 2)
     captured = capsys.readouterr()
-    assert captured.out == (
-        "summ_numbers ok, result: 3\nstart - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00\n"
-    )
+    assert captured.out == ("summ_numbers ok, result: 3\nstart - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00\n")

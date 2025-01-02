@@ -156,3 +156,35 @@ my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (
 start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
 my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
 start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 14:32:36.649767; stop - 2025-01-02 14:32:36.649771
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers ok, result: 3
+start - 2025-01-02 14:45:34.081402; stop - 2025-01-02 14:45:34.081406
+summ_two_numbers ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers error: summ_two_numbers() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers ok, result: 3
+start - 2025-01-02 14:46:03.580173; stop - 2025-01-02 14:46:03.580178
+summ_two_numbers ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers error: summ_two_numbers() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers ok, result: 3
+start - 2025-01-02 14:47:06.267682; stop - 2025-01-02 14:47:06.267686
+summ_two_numbers ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+summ_two_numbers error: summ_two_numbers() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00

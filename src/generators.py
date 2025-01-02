@@ -1,5 +1,6 @@
 from typing import Generator
 
+
 def filter_by_currency(transactions_list: list, currency: str = "USD") -> Generator[dict | str]:
     """ "
     Принимает на вход список словарей, представляющих транзакции,

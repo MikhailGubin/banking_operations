@@ -36,3 +36,123 @@ my_function error: my_function() missing 1 required positional argument: 'y'. In
 start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
 my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
 start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 12:34:12.490451; stop - 2025-01-02 12:34:12.490453
+sum_numbers ok, result: 3
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 12:34:36.966216; stop - 2025-01-02 12:34:36.966219
+sum_numbers ok, result: 3
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+sum_numbers ok, result: 3
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+sum_numbers ok, result: 3
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 12:54:13.601018; stop - 2025-01-02 12:54:13.601021
+subtraction_numbers ok, result: 7
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+subtraction_numbers ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 13:12:27.434557; stop - 2025-01-02 13:12:27.434559
+my_function ok, result: 3
+start - 2025-01-02 13:12:32.013550; stop - 2025-01-02 13:12:32.013570
+subtraction_numbers ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 13:19:49.366951; stop - 2025-01-02 13:19:49.366954
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 13:30:56.882309; stop - 2025-01-02 13:30:56.882315
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 13:32:49.911138; stop - 2025-01-02 13:32:49.911144
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 13:55:04.556240; stop - 2025-01-02 13:55:04.556256
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 14:06:33.333435; stop - 2025-01-02 14:06:33.333454
+my_function ok, result: 3
+start - 2025-01-02 14:08:45.295024; stop - 2025-01-02 14:08:45.295027
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: can only concatenate str (not "int") to str. Inputs: ('1', 2), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 14:09:18.533837; stop - 2025-01-02 14:09:18.533840
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 14:09:23.679329; stop - 2025-01-02 14:09:23.679335
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 14:15:13.426103; stop - 2025-01-02 14:15:13.426108
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 14:16:01.742835; stop - 2025-01-02 14:16:01.742841
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2025-01-02 14:24:05.639866; stop - 2025-01-02 14:24:05.639909
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2025-01-02 14:24:17.033526; stop - 2025-01-02 14:24:17.033555
+my_function error: my_function() takes 2 positional arguments but 3 were given. Inputs: (1, 2, 3), {}
+start - 2025-01-02 14:24:33.241004; stop - 2025-01-02 14:24:33.241028
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function ok, result: 3
+start - 2025-01-02 14:28:38.622507; stop - 2025-01-02 14:28:38.622512
+my_function ok, result: 5
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00
+my_function error: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}
+start - 2023-01-01 00:00:00; stop - 2023-01-01 00:00:00

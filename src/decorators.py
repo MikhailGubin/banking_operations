@@ -37,7 +37,7 @@ def log(filename: Optional[str] = None) -> Callable:
 
                 if filename:
 
-                        path = os.path.join(os.path.abspath("."),'..', 'data', f"{filename}.txt")
+                        path = os.path.join(os.path.dirname(__file__), '..', 'data', f"{filename}.txt")
                         with open(path, 'a', encoding='utf-8') as file:
                             file.write(message + "\n")
                 else:
@@ -47,15 +47,14 @@ def log(filename: Optional[str] = None) -> Callable:
         return wrapper
     return decorator
 
+
 @log(filename="function_log")
-def my_function(x, y):
+def my_function(x: int|float, y: int|float) -> int|float:
     """
     Складывает два числа
     """
     return x + y
 
 if __name__ == "__main__":
-    my_function(1, "2")
 
-
-
+    my_function(1,)

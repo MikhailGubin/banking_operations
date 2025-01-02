@@ -1,9 +1,9 @@
 import os
+import datetime
 from functools import wraps
-from time import time
 from typing import Any, Optional, Callable
 
-
+# PATH_TO_LOG_FILE = os.path.join(os.path.abspath("."), "tests")
 
 def log(filename: Optional[str] = None) -> Callable:
     """
@@ -14,27 +14,40 @@ def log(filename: Optional[str] = None) -> Callable:
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
-                time_start = time()
+                error_text = ""
+                # объявляю переменную под запись ошибок
+                time_start = datetime.datetime.now()
                 result = func(*args, **kwargs)
-                time_stop = time()
 
-            except Exception as e:
-                message = (f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}\n"
-                           f"start - {time_start}; stop - {time_stop}")
+            except Exception as error_message:
+                error_text = str(error_message)
 
             else:
+
+                time_stop = datetime.datetime.now()
                 message = f"{func.__name__} ok, result: {result}\nstart - {time_start}; stop - {time_stop}"
-            if filename:
-                with open(f"{filename}.txt", 'w', encoding='utf-8') as file:
-                    file.write(message + "\n")
-            else:
-                print(message)
 
-            return result
+            finally:
+
+                if error_text:
+                    time_stop = datetime.datetime.now()
+                    message = (f"{func.__name__} error: {error_text}. Inputs: {args}, {kwargs}\n"
+                               f"start - {time_start}; stop - {time_stop}")
+                    result = None
+
+                if filename:
+
+                        path = os.path.join(os.path.abspath("."),'..', 'data', f"{filename}.txt")
+                        with open(path, 'a', encoding='utf-8') as file:
+                            file.write(message + "\n")
+                else:
+                        print(message)
+
+                return result
         return wrapper
     return decorator
 
-@log(filename=None)
+@log(filename="function_log")
 def my_function(x, y):
     """
     Складывает два числа
@@ -42,6 +55,7 @@ def my_function(x, y):
     return x + y
 
 if __name__ == "__main__":
-    result = my_function(1, 2)
-    assert result == 3
+    my_function(1, "2")
+
+
 

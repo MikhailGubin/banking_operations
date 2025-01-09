@@ -81,7 +81,7 @@ def test_filter_by_currency(transactions_for_generate: list, currency: str, expe
 
 
 def test_filter_by_currency_empty_list() -> None:
-    """ "
+    """
     Проверяет, что функция filter_by_currency корректно
     работает при передаче ей пустого списка. Также проверяет,
     что программа не завершается ошибкой после окончания работы
@@ -118,7 +118,7 @@ def test_filter_by_no_currency_in_list(transactions_for_generate: list, currency
         )
     ],
 )
-def test_transaction_descriptions(transactions_for_generate: list, expected: str) -> str:
+def test_transaction_descriptions(transactions_for_generate: list, expected: str) -> None:
     """ "
     Проверяет работу генератора transaction_descriptions
     """
@@ -129,7 +129,7 @@ def test_transaction_descriptions(transactions_for_generate: list, expected: str
     assert next(descriptions) == "Генератор закончил работу"
 
 
-def test_no_transaction_descriptions(transactions_for_generate: list) -> str:
+def test_no_transaction_descriptions(transactions_for_generate: list) -> None:
     """ "
     Проверяет работу функции-генератора
     transaction_descriptions при передаче ей пустого

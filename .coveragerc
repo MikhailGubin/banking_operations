@@ -1,0 +1,3 @@
+[run]
+omit =
+    data/data_for_main.py

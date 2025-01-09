@@ -1,4 +1,7 @@
-def filter_by_currency(transactions_list: list, currency: str = "USD") -> dict | str:
+from typing import Generator
+
+
+def filter_by_currency(transactions_list: list, currency: str = "USD") -> Generator[dict | str]:
     """ "
     Принимает на вход список словарей, представляющих транзакции,
     возвращает итератор, который поочередно выдает транзакции
@@ -25,7 +28,7 @@ def filter_by_currency(transactions_list: list, currency: str = "USD") -> dict |
         yield "Генератор закончил работу"
 
 
-def transaction_descriptions(transactions_dict: list) -> str:
+def transaction_descriptions(transactions_dict: list) -> Generator[str]:
     """ "
     Принимает список словарей с транзакциями и возвращает
     описание каждой операции по очереди
@@ -38,7 +41,7 @@ def transaction_descriptions(transactions_dict: list) -> str:
         yield "Генератор закончил работу"
 
 
-def card_number_generator(start: int, stop: int) -> str:
+def card_number_generator(start: int, stop: int) -> Generator[str]:
     """
     Выдает номера банковских карт в формате
     XXXX XXXX XXXX XXXX, где X — цифра номера карты

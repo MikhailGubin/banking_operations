@@ -1,5 +1,7 @@
 import json
 import os
+
+
 import requests
 from dotenv import load_dotenv
 
@@ -13,9 +15,14 @@ def read_json_file(path: str) -> list:
         with open(path) as f:
             transactions_list = json.load(f)
     except FileNotFoundError:
+        print("\nФайл не найден")
         return []
     else:
-        if not transactions_list or type(transactions_list) != list:
+        if not transactions_list:
+            print("\nФайл содержит пустой список")
+            return []
+        elif type(transactions_list) != list:
+            print("\nТип объекта в файле не список")
             return []
         return transactions_list
 

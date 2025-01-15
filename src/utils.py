@@ -1,5 +1,7 @@
 import json
 import os
+import requests
+from dotenv import load_dotenv
 
 
 def read_json_file(path: str) -> list:
@@ -8,7 +10,7 @@ def read_json_file(path: str) -> list:
     JSON-файла
     """
     try:
-        with open(path, "r", encoding='utf-8') as f:
+        with open(path) as f:
             transactions_list = json.load(f)
     except FileNotFoundError:
         return []
@@ -24,3 +26,5 @@ if __name__ == "__main__":
 
     print(read_json_file(path_to_file))
     print(path_to_file)
+
+    # with open(path, "r", encoding='utf-8') as f:

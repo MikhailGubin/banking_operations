@@ -1,3 +1,4 @@
+import json
 import os
 import requests
 from dotenv import load_dotenv
@@ -13,7 +14,7 @@ def get_amount_of_transaction(transaction: dict) -> float:
     amount = transaction["operationAmount"]["amount"]
 
     if currency_code == "RUB":
-        return amount
+        return float(amount)
     else:
         load_dotenv()
         apikey = os.getenv('API_KEY')
@@ -24,12 +25,12 @@ def get_amount_of_transaction(transaction: dict) -> float:
         headers=headers
         )
         answer_api = response.json()
-        return answer_api['result']
+        return float(answer_api['result'])
 
 
 if __name__ == "__main__":
     path_to_file = os.path.join(os.path.dirname(__file__), "..", "data", "operations.json")
     transactions = read_json_file(path_to_file)
-    transaction = transactions[3]
+    transaction = transactions[2]
 
     print(get_amount_of_transaction(transaction))

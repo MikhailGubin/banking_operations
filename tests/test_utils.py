@@ -1,11 +1,10 @@
-import pytest
 import os
 from src.utils import read_json_file
 from unittest.mock import patch, mock_open
 import json
 
 
-def test_read_json_file(transactions_for_generate) -> None:
+def test_read_json_file(transactions_for_generate: list) -> None:
     """ Проверяет работу функции read_json_file """
     transactions_list = transactions_for_generate
     json_transactions_list = json.dumps(transactions_list)

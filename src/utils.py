@@ -2,14 +2,23 @@ import json
 import os
 
 
-def read_json_file(path: str) -> list:
+def read_json_file(path: str) -> list | None:
     """
     Возвращает список словарей с данными о финансовых транзакциях из
     JSON-файла
     """
     try:
-        with open(path) as f:
-            transactions_list = json.load(f)
+        with open(path) as json_file:
+
+            try:
+                transactions_list = json.load(json_file)
+            except json.JSONDecodeError:
+                print("Invalid JSON data.")
+                return None
+            except ValueError:
+                print("Invalid JSON data.")
+                return None
+
     except FileNotFoundError:
         print("\nФайл не найден")
         return []

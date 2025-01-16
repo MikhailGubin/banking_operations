@@ -50,3 +50,19 @@ def test_read_json_file_not_list() -> None:
         result = read_json_file(f"src\..\data\operations.json")
     assert  result == []
     mocked_open.assert_called_once_with(f'src\..\data\operations.json')
+
+
+def test_read_json_file_json_decode_error() -> None:
+    """
+    Проверяет работу функции read_json_file
+    при ошибке декодирования JSON-файла
+    """
+    pass
+
+
+def test_read_json_file_value_error() -> None:
+    """
+    Проверяет работу функции read_json_file при подаче
+    неправильных значений на декодирование JSON-файла
+    """
+    pass

@@ -132,7 +132,7 @@ def test_get_amount_of_transaction_wrong_input_data(wrong_transaction: Any) -> N
     assert get_amount_of_transaction(wrong_transaction) is None
 
 
-def test_get_amount_of_transaction_wrong_status_code(data_for_test_get_amount_of_transaction: tuple) -> None:
+def test_get_amount_of_transaction_failed_request(data_for_test_get_amount_of_transaction: tuple) -> None:
     """
     Проверяет работу функции get_amount_of_transaction
     при неправильном запросе к API
@@ -145,7 +145,11 @@ def test_get_amount_of_transaction_wrong_status_code(data_for_test_get_amount_of
         mock_get.assert_called_once_with(BASE_URL, headers=headers, params=params)
 
 
-def test_get_amount_of_transaction_wrong_api_answer(data_for_test_get_amount_of_transaction: tuple) -> None:
+@pytest.mark.parametrize(
+    "wrong_http_answer",
+    [{'result': ''}, "string"])
+def test_get_amount_of_transaction_wrong_api_answer(data_for_test_get_amount_of_transaction: tuple,
+                                                    wrong_http_answer: Any) -> None:
     """
     Проверяет работу функции get_amount_of_transaction,
     если полученный ответ от сервера не является корректным
@@ -154,6 +158,7 @@ def test_get_amount_of_transaction_wrong_api_answer(data_for_test_get_amount_of_
     transaction, headers, params = data_for_test_get_amount_of_transaction
     # Функция data_for_test_get_amount_of_transaction находится в модуле conftest.py
     with patch('requests.get') as mock_get:
-        mock_get.return_value.json.return_value = {}
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = wrong_http_answer
         assert get_amount_of_transaction(transaction) is None
         mock_get.assert_called_once_with(BASE_URL, headers=headers, params=params)

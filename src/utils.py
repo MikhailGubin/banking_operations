@@ -19,9 +19,6 @@ def read_json_file(path: str) -> list | None:
             except json.JSONDecodeError:
                 print("Невозможно декодировать JSON-данные")
                 return None
-            except ValueError:
-                print("JSON-данные не являются объектом или массивом")
-                return None
 
     except FileNotFoundError:
         print("\nФайл не найден")

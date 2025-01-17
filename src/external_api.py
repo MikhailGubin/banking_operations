@@ -9,16 +9,16 @@ BASE_URL = 'https://api.apilayer.com/exchangerates_data/convert'
 # URL для сайта Exchange Rates Data API
 
 
-def get_amount_of_transaction(bank_transaction: dict) -> float | None:
+def get_amount_of_transaction(bank_operation: dict) -> float | None:
     """
     Принимает на вход транзакцию и возвращает сумму
     транзакции в рублях
     """
     try:
-        currency_code = bank_transaction["operationAmount"]["currency"]["code"]
-        amount = bank_transaction["operationAmount"]["amount"]
+        currency_code = bank_operation["operationAmount"]["currency"]["code"]
+        amount = bank_operation["operationAmount"]["amount"]
     except Exception as error_message:
-        print('\n', error_message)
+        print(f'\nНеправильные входные данные. Код ошибки: {error_message}')
         return None
 
     if currency_code == "RUB":
@@ -43,17 +43,19 @@ def get_amount_of_transaction(bank_transaction: dict) -> float | None:
             return None
 
         if response.status_code != 200:
-            print(f"Получены не правильные данные от API. Status_code = {response.status_code}")
+            print(f"Получены неправильные данные от API. Status_code = {response.status_code}")
             return None
         answer_api = response.json()
-        if 'result' not in answer_api.keys():
-            print("Получены не правильные данные от API")
+        try:
+            currency_amount = float(answer_api['result'])
+        except Exception as error_text:
+            print(f'\nНекорректные данные в ответе от API. Код ошибки: {error_text}')
             return None
-        print(answer_api)
-        return float(answer_api['result'])
+
+        return currency_amount
 
 
 if __name__ == "__main__":
-    bank_transactions = read_json_file(PATH_TO_FILE)
-    bank_transaction = bank_transactions[1]
-    print(get_amount_of_transaction(bank_transaction))
+    bank_operations = read_json_file(PATH_TO_FILE)
+    bank_operation = bank_operations[1]
+    print(get_amount_of_transaction(bank_operation))

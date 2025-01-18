@@ -1,11 +1,11 @@
 import os
+
 import requests
 from dotenv import load_dotenv
-from src.utils import read_json_file, PATH_TO_FILE
 
+from src.utils import PATH_TO_FILE, read_json_file
 
-
-BASE_URL = 'https://api.apilayer.com/exchangerates_data/convert'
+BASE_URL = "https://api.apilayer.com/exchangerates_data/convert"
 # URL для сайта Exchange Rates Data API
 
 
@@ -18,26 +18,18 @@ def get_amount_of_transaction(bank_operation: dict) -> float | None:
         currency_code = bank_operation["operationAmount"]["currency"]["code"]
         amount = bank_operation["operationAmount"]["amount"]
     except Exception as error_message:
-        print(f'\nНеправильные входные данные. Код ошибки: {error_message}')
+        print(f"\nНеправильные входные данные. Код ошибки: {error_message}")
         return None
 
     if currency_code == "RUB":
         return float(amount)
     else:
         load_dotenv()
-        apikey = os.getenv('API_KEY')
+        apikey = os.getenv("API_KEY")
         headers = {"apikey": f"{apikey}"}
-        params = {
-            'to': 'RUB',
-            'from': currency_code,
-            'amount': amount
-        }
+        params = {"to": "RUB", "from": currency_code, "amount": amount}
         try:
-            response = requests.get(
-            BASE_URL,
-            headers=headers,
-            params=params
-            )
+            response = requests.get(BASE_URL, headers=headers, params=params)
         except requests.exceptions.RequestException:
             print("Ошибка при работе с HTTP запросом")
             return None
@@ -47,9 +39,9 @@ def get_amount_of_transaction(bank_operation: dict) -> float | None:
             return None
         answer_api = response.json()
         try:
-            currency_amount = float(answer_api['result'])
+            currency_amount = float(answer_api["result"])
         except Exception as error_text:
-            print(f'\nНекорректные данные в ответе от API. Код ошибки: {error_text}')
+            print(f"\nНекорректные данные в ответе от API. Код ошибки: {error_text}")
             return None
 
         return currency_amount
@@ -57,5 +49,4 @@ def get_amount_of_transaction(bank_operation: dict) -> float | None:
 
 if __name__ == "__main__":
     bank_operations = read_json_file(PATH_TO_FILE)
-    bank_operation = bank_operations[1]
-    print(get_amount_of_transaction(bank_operation))
+    print(get_amount_of_transaction(bank_operations[1]))

@@ -1,12 +1,11 @@
 import json
 import os
 
-
 PATH_TO_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "operations.json")
 # Задаю путь к файлу с транзакциями в формате JSON
 
 
-def read_json_file(path: str) -> list | None:
+def read_json_file(path: str) -> list:
     """
     Возвращает список словарей с данными о финансовых транзакциях из
     JSON-файла
@@ -18,7 +17,7 @@ def read_json_file(path: str) -> list | None:
                 transactions_list = json.load(json_file)
             except json.JSONDecodeError:
                 print("Невозможно декодировать JSON-данные")
-                return None
+                return [None]
 
     except FileNotFoundError:
         print("\nФайл не найден")
@@ -27,7 +26,7 @@ def read_json_file(path: str) -> list | None:
         if not transactions_list:
             print("\nФайл содержит пустой список")
             return []
-        elif type(transactions_list) != list:
+        elif type(transactions_list) is not list:
             print("\nТип объекта в файле не список")
             return []
         return transactions_list

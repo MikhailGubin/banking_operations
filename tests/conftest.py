@@ -1,11 +1,9 @@
-import json
 import os
 
 import pytest
 from dotenv import load_dotenv
 
-from src.utils import PATH_TO_FILE
-from src.utils import read_json_file
+from src.utils import PATH_TO_FILE, read_json_file
 
 
 @pytest.fixture
@@ -104,18 +102,14 @@ def transactions_for_generate() -> list:
 
 @pytest.fixture
 def data_for_test_get_amount_of_transaction() -> tuple:
-    """ Возвращает транзакцию, ключ и другие параметры
-     для вызова Exchange Rates Data API"""
+    """Возвращает транзакцию, ключ и другие параметры
+    для вызова Exchange Rates Data API"""
     transactions = read_json_file(PATH_TO_FILE)
     currency_code = transactions[1]["operationAmount"]["currency"]["code"]
     amount = transactions[1]["operationAmount"]["amount"]
 
     load_dotenv()
-    apikey = os.getenv('API_KEY')
+    apikey = os.getenv("API_KEY")
     headers = {"apikey": f"{apikey}"}
-    params = {
-        'to': 'RUB',
-        'from': currency_code,
-        'amount': amount
-    }
+    params = {"to": "RUB", "from": currency_code, "amount": amount}
     return transactions[1], headers, params

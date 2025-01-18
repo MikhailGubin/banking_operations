@@ -1,7 +1,3 @@
-import pytest
-
-
-@pytest.fixture
 def data_for_read_json_file() -> list:
     return [
         {

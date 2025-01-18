@@ -39,7 +39,7 @@ def get_amount_of_transaction(bank_operation: dict) -> float | None:
             return None
         answer_api = response.json()
         try:
-            currency_amount = float(answer_api["result"])
+            currency_amount = float("{:.2f}".format(answer_api["result"]))
         except Exception as error_text:
             print(f"\nНекорректные данные в ответе от API. Код ошибки: {error_text}")
             return None

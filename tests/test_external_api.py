@@ -24,7 +24,7 @@ def test_get_amount_of_transaction_usd_to_rub(data_for_test_get_amount_of_transa
             "date": "2025-01-17",
             "result": 842698.531271,
         }
-        assert get_amount_of_transaction(transaction) == 842698.531271
+        assert get_amount_of_transaction(transaction) == 842698.53
         mock_get.assert_called_once_with(BASE_URL, headers=headers, params=params)
 
 
@@ -58,7 +58,7 @@ def test_get_amount_of_transaction_eur_to_rub(data_for_test_get_amount_of_transa
             "date": "2025-01-15",
             "result": 1006987.08839,
         }
-        assert get_amount_of_transaction(transaction_eur) == 1006987.08839
+        assert get_amount_of_transaction(transaction_eur) == 1006987.09
         mock_get.assert_called_once_with(BASE_URL, headers=headers, params=params)
 
 

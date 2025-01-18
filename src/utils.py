@@ -16,8 +16,8 @@ def read_json_file(path: str) -> list:
             try:
                 transactions_list = json.load(json_file)
             except json.JSONDecodeError:
-                print("Невозможно декодировать JSON-данные")
-                return [None]
+                print("\nНевозможно декодировать JSON-данные")
+                return []
 
     except FileNotFoundError:
         print("\nФайл не найден")
@@ -33,7 +33,4 @@ def read_json_file(path: str) -> list:
 
 
 if __name__ == "__main__":
-
-    path_to_file = os.path.join(os.path.dirname(__file__), "..", "data", "operations.json")
-    print(read_json_file(path_to_file))
-    print(path_to_file)
+    print(read_json_file(PATH_TO_FILE))

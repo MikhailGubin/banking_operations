@@ -1,13 +1,14 @@
 import os
 from unittest.mock import mock_open, patch
 
+from data.operations_for_tests import data_for_read_json_file
 from src.utils import PATH_TO_FILE, read_json_file
 
 
-def test_read_json_file(data_for_read_json_file: list) -> None:
+def test_read_json_file() -> None:
     """Проверяет работу функции read_json_file"""
-    # Фикстура data_for_read_json_file находится в файле operations_for_tests.py
-    assert read_json_file(PATH_TO_FILE) == data_for_read_json_file
+    # Функция с данными data_for_read_json_file находится в файле operations_for_tests.py
+    assert read_json_file(PATH_TO_FILE) == data_for_read_json_file()
 
 
 def test_read_json_file_wrong_path() -> None:
@@ -51,5 +52,5 @@ def test_read_json_file_json_decode_error() -> None:
     mocked_open = mock_open(read_data='{"key: "Value"}')
     with patch("builtins.open", mocked_open):
         result = read_json_file(PATH_TO_FILE)
-    assert result is None
+    assert result == []
     mocked_open.assert_called_once_with(PATH_TO_FILE)

@@ -1,3 +1,4 @@
 [run]
 omit =
     data/data_for_main.py
+    data/operations_for_tests.py

@@ -1,55 +1,53 @@
 import json
-import os
 import logging
-
+import os
 
 # Получаю абсолютный путь к корневой директории проекта
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Задаю путь к файлу с транзакциями в формате JSON
 PATH_TO_FILE = os.path.join(BASE_DIR, "data", "operations.json")
 # Задаю путь к файлу utils.log в директории logs
-LOG_PATH =os.path.join(BASE_DIR, 'logs', 'utils.log')
+LOG_PATH = os.path.join(BASE_DIR, "logs", "utils.log")
 
 
-logging.basicConfig(
-    filename = LOG_PATH,
-    filemode= 'w',
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.DEBUG
-)
+logger_utils = logging.getLogger(__name__)
+file_handler_utils = logging.FileHandler(LOG_PATH, mode="w")
+file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+file_handler_utils.setFormatter(file_formatter)
+logger_utils.addHandler(file_handler_utils)
+logger_utils.setLevel(logging.DEBUG)
 
-logger = logging.getLogger(__name__)
 
 def read_json_file(path: str) -> list:
     """
     Возвращает список словарей с данными о финансовых транзакциях из
     JSON-файла
     """
-    logger.info('Начало работы функции read_json_file')
+    logger_utils.info("Начало работы функции read_json_file")
     try:
         with open(path) as json_file:
 
             try:
                 transactions_list = json.load(json_file)
             except json.JSONDecodeError:
-                logger.error('Невозможно декодировать JSON-данные')
+                logger_utils.error("Невозможно декодировать JSON-данные")
                 print("\nНевозможно декодировать JSON-данные")
                 return []
 
     except FileNotFoundError:
-        logger.error('JSON-файл не найден')
+        logger_utils.error("JSON-файл не найден")
         print("\nФайл не найден")
         return []
 
     if not transactions_list:
-        logger.error('JSON-файл содержит пустой список')
+        logger_utils.error("JSON-файл содержит пустой список")
         print("\nФайл содержит пустой список")
         return []
     elif type(transactions_list) is not list:
-        logger.error('Тип объекта в JSON-файле не список')
+        logger_utils.error("Тип объекта в JSON-файле не список")
         print("\nТип объекта в файле не список")
         return []
-    logger.info('Функции read_json_file успешно завершила работу')
+    logger_utils.info("Функции read_json_file успешно завершила работу")
     return transactions_list
 
 

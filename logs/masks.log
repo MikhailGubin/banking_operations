@@ -1,8 +1,4 @@
-2025-01-19 13:57:17,066 - src.masks - INFO - Начало работы функции get_mask_card_number
-2025-01-19 13:57:17,066 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
-2025-01-19 13:57:17,066 - src.masks - INFO - Начало работы функции get_mask_account
-2025-01-19 13:57:17,066 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
-2025-01-19 13:57:17,066 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-19 13:57:17,067 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-19 13:57:17,068 - src.masks - INFO - Начало работы функции get_mask_card_number
-2025-01-19 13:57:17,068 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-19 20:39:49,335 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-19 20:39:49,335 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-19 20:39:49,335 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-19 20:39:49,336 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу

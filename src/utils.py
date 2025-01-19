@@ -49,7 +49,7 @@ def read_json_file(path: str) -> list:
         logger.error('Тип объекта в JSON-файле не список')
         print("\nТип объекта в файле не список")
         return []
-    logger.info('Функции read_json_file успешно отработала')
+    logger.info('Функции read_json_file успешно завершила работу')
     return transactions_list
 
 

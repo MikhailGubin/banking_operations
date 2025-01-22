@@ -367,10 +367,25 @@ pprint.pprint(read_excel_file(PATH_TO_EXCEL_FILE), width=85, indent=4)
 
 #Пример входных данных:
 
-|   id	|   state	|   date 	|   ...	|    description	|
-|---	|---	|---	|---	|---	|
-|650703|EXECUTED|2023-09-05T11:30:32Z;16210 	|  ... 	| 	|Перевод организации
-|3598919|EXECUTED|2020-12-06T23:00:58Z;29740 	|  ...	|	Перевод с карты на карту|
+<table>
+    <tr>
+        <th>id</th>
+        <th>state</th>
+    </tr>
+    <tr>
+        <td>650703</td>
+        <td>3598919</td>
+    </tr>
+    <tr>
+        <td>EXECUTED</td>
+        <td>EXECUTED</td>
+    </tr>
+</table>
+
+|    id   |  state   |          date              | ... |         to                |       description        | 
+|---      |---       |---                         |---  |---                        |---                       |
+|  650703 | EXECUTED | 2023-09-05T11:30:32Z;16210 | ... | Cчет 39745660563456619397 |  Перевод организации     |
+| 3598919 | EXECUTED | 2020-12-06T23:00:58Z;29740 | ... | Discover 0720428384694643 | Перевод с карты на карту |
 
 ...
 

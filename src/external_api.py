@@ -3,8 +3,6 @@ import os
 import requests
 from dotenv import load_dotenv
 
-from src.utils import PATH_TO_FILE, read_json_file
-
 BASE_URL = "https://api.apilayer.com/exchangerates_data/convert"
 # URL для сайта Exchange Rates Data API
 

@@ -45,8 +45,3 @@ def get_amount_of_transaction(bank_operation: dict) -> float | None:
             return None
 
         return currency_amount
-
-
-if __name__ == "__main__":
-    bank_operations = read_json_file(PATH_TO_FILE)
-    print(get_amount_of_transaction(bank_operations[1]))

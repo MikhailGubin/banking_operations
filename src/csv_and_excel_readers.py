@@ -1,14 +1,13 @@
-import csv
-import pandas as pd
-from typing import List, Dict
 import os
+from typing import Dict, List
 
+import pandas as pd
 
 # Получаю абсолютный путь к корневой директории проекта
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Задаю путь к файлу с транзакциями в формате CSV
+# Задаю путь к CSV-файлу с транзакциями
 PATH_TO_CSV_FILE = os.path.join(BASE_DIR, "data", "transactions.csv")
-# Задаю путь к файлу с транзакциями в формате Excel
+# Задаю путь к Excel-файлу с транзакциями
 PATH_TO_EXCEL_FILE = os.path.join(BASE_DIR, "data", "transactions_excel.xlsx")
 
 
@@ -52,10 +51,3 @@ def read_excel_file(path_to_file: str) -> List[Dict]:
         print("\nВ Excel-файле нет данных")
         return [{}]
     return transactions_dict
-
-
-if __name__ == "__main__":
-    pd_csv_file = pd.read_csv(PATH_TO_CSV_FILE)
-    print(pd_csv_file.head())
-    pd_excel_file = pd.read_excel(PATH_TO_EXCEL_FILE)
-    print(pd_excel_file.head())

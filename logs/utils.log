@@ -1,2 +1,22 @@
-2025-01-19 20:39:49,336 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-19 20:39:49,336 - src.utils - INFO - Функции read_json_file успешно завершила работу
+2025-01-22 20:48:42,209 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,210 - src.utils - INFO - Функции read_json_file успешно завершила работу
+2025-01-22 20:48:42,214 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,215 - src.utils - INFO - Функции read_json_file успешно завершила работу
+2025-01-22 20:48:42,220 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,220 - src.utils - INFO - Функции read_json_file успешно завершила работу
+2025-01-22 20:48:42,231 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,232 - src.utils - INFO - Функции read_json_file успешно завершила работу
+2025-01-22 20:48:42,236 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,237 - src.utils - INFO - Функции read_json_file успешно завершила работу
+2025-01-22 20:48:42,241 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,242 - src.utils - INFO - Функции read_json_file успешно завершила работу
+2025-01-22 20:48:42,345 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,345 - src.utils - INFO - Функции read_json_file успешно завершила работу
+2025-01-22 20:48:42,348 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,348 - src.utils - ERROR - JSON-файл не найден
+2025-01-22 20:48:42,353 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,354 - src.utils - ERROR - JSON-файл содержит пустой список
+2025-01-22 20:48:42,359 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,360 - src.utils - ERROR - Тип объекта в JSON-файле не список
+2025-01-22 20:48:42,364 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-22 20:48:42,364 - src.utils - ERROR - Невозможно декодировать JSON-данные

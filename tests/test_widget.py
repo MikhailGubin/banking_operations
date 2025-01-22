@@ -40,6 +40,7 @@ def test_mask_account_card_wrong_length(account_card_number: str) -> None:
     """
     with pytest.raises(ValueError):
         mask_account_card(account_card_number)
+    # assert mask_account_card(account_card_number) == ""
 
 
 @pytest.mark.parametrize(
@@ -61,6 +62,7 @@ def test_mask_account_card_wrong_format(account_card_number: str) -> None:
     """
     with pytest.raises(ValueError):
         mask_account_card(account_card_number)
+    # assert mask_account_card(account_card_number) == ""
 
 
 @pytest.mark.parametrize(

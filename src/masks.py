@@ -20,11 +20,8 @@ def get_mask_card_number(card_number: str | int) -> str:
     logger_masks.info("Начало работы функции get_mask_card_number")
     card_number_str = str(card_number)
     if not card_number_str.isdigit() or len(card_number_str) != 16:
-        try:
-            raise ValueError("Неправильно введен номер карты")
-        except ValueError:
-            logger_masks.error("Неправильно введен номер карты")
-            return ""
+        logger_masks.error("Неправильно введен номер карты")
+        raise ValueError("Неправильно введен номер карты")
 
     logger_masks.info("Функция get_mask_card_number успешно завершила работу")
     return f"{card_number_str[:4]} {card_number_str[4:6]}** **** {card_number_str[-4:]}"
@@ -35,11 +32,8 @@ def get_mask_account(account_number: str | int) -> str:
     logger_masks.info("Начало работы функции get_mask_account")
     account_number_str = str(account_number)
     if not account_number_str.isdigit() or len(account_number_str) != 20:
-        try:
-            raise ValueError("Неправильно введен номер счёта")
-        except ValueError:
-            logger_masks.error("Неправильно введен номер счёта")
-            return ""
+        logger_masks.error("Неправильно введен номер счёта")
+        raise ValueError("Неправильно введен номер счёта")
 
     logger_masks.info("Функция get_mask_card_number успешно завершила работу")
     return "**" + account_number_str[-4:]

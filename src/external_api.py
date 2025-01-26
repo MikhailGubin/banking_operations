@@ -3,8 +3,6 @@ import os
 import requests
 from dotenv import load_dotenv
 
-from src.utils import PATH_TO_FILE, read_json_file
-
 BASE_URL = "https://api.apilayer.com/exchangerates_data/convert"
 # URL для сайта Exchange Rates Data API
 
@@ -45,8 +43,3 @@ def get_amount_of_transaction(bank_operation: dict) -> float | None:
             return None
 
         return currency_amount
-
-
-if __name__ == "__main__":
-    bank_operations = read_json_file(PATH_TO_FILE)
-    print(get_amount_of_transaction(bank_operations[1]))

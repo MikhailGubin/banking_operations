@@ -1,6 +1,7 @@
 import pprint
 
 from data.data_for_main import bank_card_or_account_number, banking_operations_info, transactions_for_generate
+from src.csv_and_excel_readers import PATH_TO_CSV_FILE, PATH_TO_EXCEL_FILE, read_csv_file, read_excel_file
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
@@ -29,3 +30,5 @@ if __name__ == "__main__":
 
     for card_number in card_number_generator(11, 20):
         print(card_number)
+    pprint.pprint(read_csv_file(PATH_TO_CSV_FILE), width=85, indent=4)
+    pprint.pprint(read_excel_file(PATH_TO_EXCEL_FILE), width=85, indent=4)

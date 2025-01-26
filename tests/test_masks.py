@@ -26,6 +26,7 @@ def test_get_mask_card_number_wrong_type(card_number: str | int) -> None:
     """
     with pytest.raises(ValueError):
         get_mask_card_number(card_number)
+    # assert get_mask_card_number(card_number) == ""
 
 
 @pytest.mark.parametrize("card_number", [("70007922896063611258"), ("1234"), ("")])
@@ -37,6 +38,7 @@ def test_get_mask_card_number_wrong_length(card_number: str | int) -> None:
     """
     with pytest.raises(ValueError):
         get_mask_card_number(card_number)
+    # assert get_mask_card_number(card_number) == ""
 
 
 @pytest.mark.parametrize(
@@ -58,6 +60,7 @@ def test_get_mask_account_wrong_type(account_number: str | int) -> None:
     """
     with pytest.raises(ValueError):
         get_mask_account(account_number)
+    # assert get_mask_account(account_number) == ""
 
 
 @pytest.mark.parametrize("account_number", [("7365410843013587430556"), ("1234567569"), ("")])
@@ -68,3 +71,4 @@ def test_get_mask_account_wrong_length(account_number: str | int) -> None:
     """
     with pytest.raises(ValueError):
         get_mask_account(account_number)
+    # assert get_mask_account(account_number) == ""

@@ -49,7 +49,3 @@ def read_json_file(path: str) -> list:
         return []
     logger_utils.info("Функции read_json_file успешно завершила работу")
     return transactions_list
-
-
-if __name__ == "__main__":
-    print(read_json_file(PATH_TO_FILE))

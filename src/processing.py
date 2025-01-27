@@ -7,7 +7,7 @@ def filter_by_state(banking_transactions: list, state: str = "EXECUTED") -> list
     """
     transactions_in_bank = []
     for transaction in banking_transactions:
-        if "state" in transaction and transaction["state"] == state:
+        if "state" in transaction and transaction["state"] == state.upper():
             transactions_in_bank.append(transaction)
 
     if not transactions_in_bank:

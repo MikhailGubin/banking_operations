@@ -12,7 +12,7 @@ def filter_by_currency(transactions_list: list, currency: str = "USD") -> Genera
     if transactions_list:
 
         for transaction in transactions_list:
-            if "code" not in transaction["operationAmount"]["currency"]:
+            if "code" not in [transaction["operationAmount"]["currency"], transaction["currency_code"]]:
                 continue
             if transaction["operationAmount"]["currency"]["code"] == currency:
                 amount_transactions += 1

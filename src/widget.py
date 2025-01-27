@@ -1,4 +1,5 @@
 from src.masks import get_mask_account, get_mask_card_number
+import re
 
 
 def mask_account_card(number_of_card_or_check: str) -> str:
@@ -30,23 +31,10 @@ def mask_account_card(number_of_card_or_check: str) -> str:
 
 def get_date(date_and_time: str) -> str:
     """ "возвращает строку с датой в формате "ДД.ММ.ГГГГ" ("11.03.2024")"""
-    if len(date_and_time) != 26:
-        raise ValueError("Количество символов в дате меньше 26")
-
-    number = [date_and_time[i] for i in [0, 1, 2, 3, 5, 6, 8, 9, 11, 12, 14, 15, 17, 18, 20, 21]]
-    digits_str = str("".join(number))
-
-    if any(
-        [
-            not digits_str.isdigit(),
-            date_and_time[4] != "-",
-            date_and_time[7] != "-",
-            date_and_time[10] != "T",
-            date_and_time[13] != ":",
-            date_and_time[16] != ":",
-            date_and_time[19] != ".",
-        ]
-    ):
+    # Пример даты:2023-06-27T19:53:05Z;25820
+    pattern = r"\d{4}[-]\d{2}[-]\d{2}[T]\d{2}[:]\d{2}[:]\d{2}\S+"
+    dates = re.findall(pattern, date_and_time)
+    if not dates:
         raise ValueError("Неправильный формат даты")
 
     return f"{date_and_time[8:10]}.{date_and_time[5:7]}.{date_and_time[:4]}"

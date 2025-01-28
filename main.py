@@ -55,14 +55,7 @@ def main(params_for_main: dict) -> List[Dict]:
         # Производится сортировка операций по слову
         bank_transactions = get_transaction_by_string(bank_transactions, word_for_searching)
 
-    if not bank_transactions:
-        print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
-        return [{}]
-    else:
-        print("Распечатываю итоговый список транзакций...\n"
-              f"Всего банковских операций в выборке: {len(bank_transactions)}")
-        pprint.pprint(bank_transactions, width=85, indent=4)
-        return bank_transactions
+    return bank_transactions
 
 
 if __name__ == "__main__":
@@ -149,7 +142,15 @@ if __name__ == "__main__":
         'filter_for_word': filter_for_word,
         'flag_decrease_bool': flag_decrease_bool,
         'word_for_searching': word_for_searching
-                    }
+    }
 
-    main(args_for_main)
+    # Записываю результат работы функции main в переменную transactions_list
+    transactions_list = main(args_for_main)
+
+    if not transactions_list:
+        print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
+    else:
+        print("Распечатываю итоговый список транзакций...\n"
+              f"Всего банковских операций в выборке: {len(transactions_list)}")
+        pprint.pprint(transactions_list, width=85, indent=4)
 

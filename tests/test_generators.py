@@ -88,8 +88,8 @@ def test_filter_by_currency_empty_list() -> None:
     генератора
     """
     empty_transaction = filter_by_currency([])
-    assert next(empty_transaction) == "Пустой список транзакций"
-    assert next(empty_transaction) == "Генератор закончил работу"
+    assert next(empty_transaction) == {}
+    assert next(empty_transaction) == {}
 
 
 def test_filter_by_no_currency_in_list(transactions_for_generate: list, currency: str = "EURO") -> None:
@@ -100,7 +100,7 @@ def test_filter_by_no_currency_in_list(transactions_for_generate: list, currency
     """
     no_necessary_transaction = filter_by_currency(transactions_for_generate, currency)
     assert next(no_necessary_transaction) == {}
-    assert next(no_necessary_transaction) == "Генератор закончил работу"
+    assert next(no_necessary_transaction) == {}
 
 
 @pytest.mark.parametrize(

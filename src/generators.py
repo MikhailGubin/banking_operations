@@ -12,11 +12,11 @@ def filter_by_currency(transactions_list: list, currency: str = "USD") -> Genera
     if transactions_list:
 
         for transaction in transactions_list:
-            if 'currency_code' in transaction:
-                if transaction['currency_code'] == currency:
+            if "currency_code" in transaction:
+                if transaction["currency_code"] == currency:
                     amount_transactions += 1
                     yield transaction
-            elif "code"  in transaction["operationAmount"]["currency"]:
+            elif "code" in transaction["operationAmount"]["currency"]:
                 if transaction["operationAmount"]["currency"]["code"] == currency:
                     amount_transactions += 1
                     yield transaction
@@ -26,10 +26,12 @@ def filter_by_currency(transactions_list: list, currency: str = "USD") -> Genera
             yield {}
 
     else:
-        yield "Пустой список транзакций"
+        print("Пустой список транзакций")
+        yield {}
 
     while True:
-        yield "Генератор закончил работу"
+        print("Генератор закончил работу")
+        yield {}
 
 
 def transaction_descriptions(transactions_dict: list) -> Generator[str]:

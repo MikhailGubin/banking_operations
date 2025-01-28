@@ -1,24 +1,2 @@
-2025-01-28 19:42:43,912 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:43,913 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-28 19:42:43,918 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:43,918 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-28 19:42:43,923 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:43,924 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-28 19:42:43,934 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:43,935 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-28 19:42:43,939 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:43,940 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-28 19:42:43,944 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:43,945 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-28 19:42:43,976 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:43,977 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-28 19:42:44,705 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:44,706 - src.utils - INFO - Функции read_json_file успешно завершила работу
-2025-01-28 19:42:44,709 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:44,709 - src.utils - ERROR - JSON-файл не найден
-2025-01-28 19:42:44,714 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:44,714 - src.utils - ERROR - JSON-файл содержит пустой список
-2025-01-28 19:42:44,719 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:44,719 - src.utils - ERROR - Тип объекта в JSON-файле не список
-2025-01-28 19:42:44,724 - src.utils - INFO - Начало работы функции read_json_file
-2025-01-28 19:42:44,724 - src.utils - ERROR - Невозможно декодировать JSON-данные
+2025-01-28 20:14:58,342 - src.utils - INFO - Начало работы функции read_json_file
+2025-01-28 20:14:58,343 - src.utils - INFO - Функции read_json_file успешно завершила работу

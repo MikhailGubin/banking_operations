@@ -1,6 +1,6 @@
 import re
-from typing import List, Dict
 from collections import Counter
+from typing import Dict, List
 
 from typing_extensions import Pattern
 
@@ -29,9 +29,9 @@ def get_transaction_by_string(transactions_dicts: List[Dict], string_for_searchi
     for transaction in transactions_dicts:
 
         try:
-            if re.findall(string_for_searching, transaction['state'], flags=re.IGNORECASE):
+            if re.findall(string_for_searching, transaction["state"], flags=re.IGNORECASE):
                 required_list_with_dicts.append(transaction)
-            elif re.findall(string_for_searching, transaction['description'], flags=re.IGNORECASE):
+            elif re.findall(string_for_searching, transaction["description"], flags=re.IGNORECASE):
                 required_list_with_dicts.append(transaction)
         except Exception as error_message:
             print(f"\nОшибка поиска строки. Сообщение об ошибке:\n{error_message}")
@@ -42,7 +42,6 @@ def get_transaction_by_string(transactions_dicts: List[Dict], string_for_searchi
         return [{}]
 
     return required_list_with_dicts
-
 
 
 def count_operations_in_categories(transactions_dicts: List[Dict], operations_categories: list) -> dict:
@@ -68,9 +67,11 @@ def count_operations_in_categories(transactions_dicts: List[Dict], operations_ca
     if wrong_flag:
         return {}
 
-    counted_category = Counter(transaction['description']
-                               for transaction in transactions_dicts
-                               if transaction['description'] in operations_categories)
+    counted_category = Counter(
+        transaction["description"]
+        for transaction in transactions_dicts
+        if transaction["description"] in operations_categories
+    )
     if not counted_category:
         print("\nБанковские операции в заданных категориях отсутствуют")
 
@@ -79,5 +80,4 @@ def count_operations_in_categories(transactions_dicts: List[Dict], operations_ca
 
 if __name__ == "__main__":
     bank_categories = ["Перевод со счета на счет", "Перевод с карты на карту"]
-    print(type(re.compile(r'\b(\w){7, 8}\b')))
-
+    print(type(re.compile(r"\b(\w){7, 8}\b")))

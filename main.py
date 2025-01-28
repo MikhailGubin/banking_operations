@@ -10,79 +10,94 @@ from src.processing import filter_by_state, sort_by_date
 from src.search_and_counter import get_transaction_by_string
 from src.utils import PATH_TO_FILE, read_json_file
 from src.widget import get_date, mask_account_card
+from typing import Dict, List, Pattern
+
+
+# def main(choose_data_format: str, choose_transactions_state: str, filter_for_date: str,
+#          flag_decrease: str = "по убыванию", )
+
+def main(params_for_main: dict) -> List[Dict]:
+    """
+    Отвечает за основную логику проекта с пользователем
+    и связывает функциональности между собой
+    """
+    # Создаю список со словарями для хранения банковских транзакций
+    bank_transactions = [{}]
+
+    # Получаю данные, введенные Пользователем, из словаря params_for_main
+    choose_data_format = params_for_main['choose_data_format']
+    choose_transactions_state = params_for_main['choose_transactions_state']
+    filter_for_date = params_for_main['filter_for_date']
+    filter_for_currency = params_for_main['filter_for_currency']
+    filter_for_word = params_for_main['filter_for_word']
+    flag_decrease_bool = params_for_main['flag_decrease_bool']
+    word_for_searching = params_for_main['word_for_searching']
+
+    if choose_data_format == "1":
+        bank_transactions = read_json_file(PATH_TO_FILE)
+    elif choose_data_format == "2":
+        bank_transactions = read_csv_file(PATH_TO_CSV_FILE)
+    elif choose_data_format == "3":
+        bank_transactions = read_excel_file(PATH_TO_EXCEL_FILE)
+
+    bank_transactions = filter_by_state(bank_transactions, choose_transactions_state)
+
+    if filter_for_date.lower() == "да":
+        # Производится сортировка операций по дате
+        bank_transactions = sort_by_date(bank_transactions, decreasing=flag_decrease_bool)
+
+    if filter_for_currency.lower() == "да":
+        # Будут выводиться только рублевые операции
+        bank_transactions = [next(filter_by_currency(bank_transactions, "RUB"))
+                             for _ in bank_transactions]
+
+    if filter_for_word.lower() == "да":
+        # Производится сортировка операций по слову
+        bank_transactions = get_transaction_by_string(bank_transactions, word_for_searching)
+
+    if not bank_transactions:
+        print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
+        return [{}]
+    else:
+        print("Распечатываю итоговый список транзакций...\n"
+              f"Всего банковских операций в выборке: {len(bank_transactions)}")
+        pprint.pprint(bank_transactions, width=85, indent=4)
+        return bank_transactions
+
 
 if __name__ == "__main__":
-    # # Visa Platinum 8990922113665229 - пример банковской карты
-    # print(get_mask_card_number(8990922113665229))
-    # # Счет 11776614605963066702 - пример банковского счета
-    # print(get_mask_account(11776614605963066702))
-    # pprint.pprint(read_json_file(PATH_TO_FILE), width=85, indent=4)
-    #
-    # print(mask_account_card(bank_card_or_account_number))
-    # print(get_date("2019-07-03T18:35:29.512364"))
-    # pprint.pprint(filter_by_state(banking_operations_info), width=85, indent=4)
-    # pprint.pprint(sort_by_date(banking_operations_info, decreasing=False), width=85, indent=4)
-    #
-    # usd_transactions = filter_by_currency(transactions_for_generate, "USD")
-    # for _ in range(2):
-    #     pprint.pprint(next(usd_transactions), width=85, indent=4)
-    #
-    # descriptions = transaction_descriptions(transactions_for_generate)
-    # for _ in range(3):
-    #     print(next(descriptions))
-    #
-    # for card_number in card_number_generator(11, 20):
-    #     print(card_number)
-
-    # Получаю абсолютный путь к корневой директории проекта
-    # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    # # Задаю путь к файлу masks.log в директории logs
-    # LOG_PATH = os.path.join(BASE_DIR, "logs", "main.log")
-    #
-    # logger_masks = logging.getLogger(__name__)
-    # file_handler_masks = logging.FileHandler(LOG_PATH, mode="w")
-    # file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-    # file_handler_masks.setFormatter(file_formatter)
-    # logger_masks.addHandler(file_handler_masks)
-    # logger_masks.setLevel(logging.DEBUG)
 
     # Создаю флаги проверки ответов Пользователя
     flag_answer_1 = True
     flag_answer_2 = True
-    # Создаю список со словарями для записи данных
-    bank_transactions = [{}]
 
     while flag_answer_1:
 
         flag_answer_1 = False
         print("""
-    Привет! Добро пожаловать в программу работы c банковскими транзакциями. 
-    Выберите необходимый пункт меню:
-    1. Получить информацию о транзакциях из JSON-файла
-    2. Получить информацию о транзакциях из CSV-файла
-    3. Получить информацию о транзакциях из XLSX-файла
-    """)
+Привет! Добро пожаловать в программу работы c банковскими транзакциями. 
+Выберите необходимый пункт меню:
+1. Получить информацию о транзакциях из JSON-файла
+2. Получить информацию о транзакциях из CSV-файла
+3. Получить информацию о транзакциях из XLSX-файла
+        """)
         choose_data_format = input()
         if choose_data_format == "1":
             print("Для обработки выбран JSON-файл")
-            bank_transactions = read_json_file(PATH_TO_FILE)
         elif choose_data_format == "2":
             print("Для обработки выбран CSV-файл")
-            bank_transactions = read_csv_file(PATH_TO_CSV_FILE)
         elif choose_data_format == "3":
             print("Для обработки выбран XLSX-файл")
-            bank_transactions = read_excel_file(PATH_TO_EXCEL_FILE)
         else:
             print("Введён неверный номер пункта меню")
             flag_answer_1 = True
             continue
-    # pprint.pprint(bank_transactions[0:4], width=85, indent=4)
 
     while flag_answer_2:
 
         flag_answer_2 = False
         print("Введите статус, по которому необходимо выполнить фильтрацию. "
-              "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING")
+              "\nДоступные для фильтровки статусы: EXECUTED, CANCELED, PENDING")
 
         choose_transactions_state = input().upper()
         if choose_transactions_state == "EXECUTED":
@@ -96,50 +111,45 @@ if __name__ == "__main__":
             flag_answer_2 = True
             continue
 
-        bank_transactions = filter_by_state(bank_transactions, choose_transactions_state)
-
     filter_for_date = input("Отсортировать операции по дате? Да/Нет\n")
-
+    flag_decrease_bool = True
     if filter_for_date.lower() == "да":
         flag_decrease = input("Отсортировать по возрастанию или по убыванию? (по возрастанию / по убыванию)\n")
-
         if flag_decrease.lower() == "по возрастанию":
             flag_decrease_bool = False
         elif flag_decrease.lower() == "по убыванию":
-            flag_decrease_bool = True
+            print("Производится сортировка по убыванию")
         else:
             print("Неправильно введены данные, производится сортировка по убыванию")
-            flag_decrease_bool = True
 
-        bank_transactions = sort_by_date(bank_transactions, decreasing=flag_decrease_bool)
 
     elif filter_for_date.lower() == "нет":
         print("Банковские операции по дате не отсортированы")
     else:
         print("Введено неправильное значение. Банковские операции по дате не отсортированы")
 
-
-    # pprint.pprint(operations_filtered_by_date[0], width=85, indent=4)
-    # pprint.pprint(operations_filtered_by_date[1], width=85, indent=4)
-    # pprint.pprint(operations_filtered_by_date[2], width=85, indent=4)
-
     filter_for_currency = input("Выводить только рублевые транзакции? Да/Нет\n")
     if filter_for_currency.lower() == "да":
         print("Выводятся только рублевые транзакции")
-        bank_transactions = [next(filter_by_currency(bank_transactions, "RUB"))
-                             for transaction in bank_transactions]
     else:
         print("Выводятся транзакции во всех валютах")
 
     filter_for_word = input("Отфильтровать список транзакций по определенному слову в описании? Да/Нет\n")
-
+    word_for_searching = ""
     if filter_for_word.lower() == "да":
         word_for_searching = input("Введите слово для поиска \n")
-        bank_transactions = get_transaction_by_string(bank_transactions, word_for_searching)
     else:
         print("Список транзакций по определенному слову не отсортирован")
 
-    print("Распечатываю итоговый список транзакций...\n"
-          f"Всего банковских операций в выборке: {len(bank_transactions)}")
-    pprint.pprint(bank_transactions, width=85, indent=4)
+    args_for_main ={
+        'choose_data_format': choose_data_format,
+        'choose_transactions_state': choose_transactions_state,
+        'filter_for_date': filter_for_date,
+        'filter_for_currency': filter_for_currency,
+        'filter_for_word': filter_for_word,
+        'flag_decrease_bool': flag_decrease_bool,
+        'word_for_searching': word_for_searching
+                    }
+
+    main(args_for_main)
 

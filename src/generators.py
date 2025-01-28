@@ -29,7 +29,7 @@ def filter_by_currency(transactions_list: list, currency: str = "USD") -> Genera
 
 
 def transaction_descriptions(transactions_dict: list) -> Generator[str]:
-    """ "
+    """
     Принимает список словарей с транзакциями и возвращает
     описание каждой операции по очереди
     """

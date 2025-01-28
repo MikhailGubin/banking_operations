@@ -13,53 +13,12 @@ from src.widget import get_date, mask_account_card
 from typing import Dict, List, Pattern
 
 
-# def main(choose_data_format: str, choose_transactions_state: str, filter_for_date: str,
-#          flag_decrease: str = "по убыванию", )
-
-def main(params_for_main: dict) -> List[Dict]:
-    """
-    Отвечает за основную логику проекта с пользователем
-    и связывает функциональности между собой
-    """
-    # Создаю список со словарями для хранения банковских транзакций
-    bank_transactions = [{}]
-
-    # Получаю данные, введенные Пользователем, из словаря params_for_main
-    choose_data_format = params_for_main['choose_data_format']
-    choose_transactions_state = params_for_main['choose_transactions_state']
-    filter_for_date = params_for_main['filter_for_date']
-    filter_for_currency = params_for_main['filter_for_currency']
-    filter_for_word = params_for_main['filter_for_word']
-    flag_decrease_bool = params_for_main['flag_decrease_bool']
-    word_for_searching = params_for_main['word_for_searching']
-
-    if choose_data_format == "1":
-        bank_transactions = read_json_file(PATH_TO_FILE)
-    elif choose_data_format == "2":
-        bank_transactions = read_csv_file(PATH_TO_CSV_FILE)
-    elif choose_data_format == "3":
-        bank_transactions = read_excel_file(PATH_TO_EXCEL_FILE)
-
-    bank_transactions = filter_by_state(bank_transactions, choose_transactions_state)
-
-    if filter_for_date.lower() == "да":
-        # Производится сортировка операций по дате
-        bank_transactions = sort_by_date(bank_transactions, decreasing=flag_decrease_bool)
-
-    if filter_for_currency.lower() == "да":
-        # Будут выводиться только рублевые операции
-        bank_transactions = [next(filter_by_currency(bank_transactions, "RUB"))
-                             for _ in bank_transactions]
-
-    if filter_for_word.lower() == "да":
-        # Производится сортировка операций по слову
-        bank_transactions = get_transaction_by_string(bank_transactions, word_for_searching)
-
-    return bank_transactions
+def main_input() -> dict:
+    arg = input()
+    return {"1": arg}
 
 
-if __name__ == "__main__":
-
+def main_interface() -> dict:
     # Создаю флаги проверки ответов Пользователя
     flag_answer_1 = True
     flag_answer_2 = True
@@ -68,12 +27,12 @@ if __name__ == "__main__":
 
         flag_answer_1 = False
         print("""
-Привет! Добро пожаловать в программу работы c банковскими транзакциями. 
-Выберите необходимый пункт меню:
-1. Получить информацию о транзакциях из JSON-файла
-2. Получить информацию о транзакциях из CSV-файла
-3. Получить информацию о транзакциях из XLSX-файла
-        """)
+    Привет! Добро пожаловать в программу работы c банковскими транзакциями.
+    Выберите необходимый пункт меню:
+    1. Получить информацию о транзакциях из JSON-файла
+    2. Получить информацию о транзакциях из CSV-файла
+    3. Получить информацию о транзакциях из XLSX-файла
+            """)
         choose_data_format = input()
         if choose_data_format == "1":
             print("Для обработки выбран JSON-файл")
@@ -134,7 +93,7 @@ if __name__ == "__main__":
     else:
         print("Список транзакций по определенному слову не отсортирован")
 
-    args_for_main ={
+    return     {
         'choose_data_format': choose_data_format,
         'choose_transactions_state': choose_transactions_state,
         'filter_for_date': filter_for_date,
@@ -144,13 +103,58 @@ if __name__ == "__main__":
         'word_for_searching': word_for_searching
     }
 
-    # Записываю результат работы функции main в переменную transactions_list
-    transactions_list = main(args_for_main)
+def main_functions(params_for_main: dict) -> List[Dict]:
+    """
+    Отвечает за основную логику проекта с пользователем
+    и связывает функциональности между собой
+    """
+    # Создаю список со словарями для хранения банковских транзакций
+    bank_transactions = [{}]
 
-    if not transactions_list:
+    # Получаю данные, введенные Пользователем, из словаря params_for_main
+    choose_data_format = params_for_main['choose_data_format']
+    choose_transactions_state = params_for_main['choose_transactions_state']
+    filter_for_date = params_for_main['filter_for_date']
+    filter_for_currency = params_for_main['filter_for_currency']
+    filter_for_word = params_for_main['filter_for_word']
+    flag_decrease_bool = params_for_main['flag_decrease_bool']
+    word_for_searching = params_for_main['word_for_searching']
+
+    if choose_data_format == "1":
+        bank_transactions = read_json_file(PATH_TO_FILE)
+    elif choose_data_format == "2":
+        bank_transactions = read_csv_file(PATH_TO_CSV_FILE)
+    elif choose_data_format == "3":
+        bank_transactions = read_excel_file(PATH_TO_EXCEL_FILE)
+
+    bank_transactions = filter_by_state(bank_transactions, choose_transactions_state)
+
+    if filter_for_date.lower() == "да":
+        # Производится сортировка операций по дате
+        bank_transactions = sort_by_date(bank_transactions, decreasing=flag_decrease_bool)
+
+    if filter_for_currency.lower() == "да":
+        # Будут выводиться только рублевые операции
+        bank_transactions = [next(filter_by_currency(bank_transactions, "RUB"))
+                             for _ in bank_transactions]
+
+    if filter_for_word.lower() == "да":
+        # Производится сортировка операций по слову
+        bank_transactions = get_transaction_by_string(bank_transactions, word_for_searching)
+
+    return bank_transactions
+
+
+def get_final_results(transactions_list: list[dict]) -> None:
+    """ Выводит результаты работы программы """
+    if transactions_list == [{}]:
         print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
     else:
-        print("Распечатываю итоговый список транзакций...\n"
-              f"Всего банковских операций в выборке: {len(transactions_list)}")
+        number_operations = len(transactions_list)
+        print(f"Распечатываю итоговый список транзакций...\nВсего банковских операций в выборке: {number_operations}")
         pprint.pprint(transactions_list, width=85, indent=4)
 
+if __name__ == "__main__":
+    args_for_main = main_interface()
+    transactions_list = main_functions(args_for_main)
+    get_final_results(transactions_list)

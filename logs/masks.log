@@ -1,0 +1,52 @@
+2025-01-28 19:42:44,600 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,600 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,603 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,603 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,605 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,606 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,608 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,608 - src.masks - ERROR - Неправильно введен номер карты
+2025-01-28 19:42:44,610 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,610 - src.masks - ERROR - Неправильно введен номер карты
+2025-01-28 19:42:44,612 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,612 - src.masks - ERROR - Неправильно введен номер карты
+2025-01-28 19:42:44,614 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,615 - src.masks - ERROR - Неправильно введен номер карты
+2025-01-28 19:42:44,617 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,617 - src.masks - ERROR - Неправильно введен номер карты
+2025-01-28 19:42:44,619 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,619 - src.masks - ERROR - Неправильно введен номер карты
+2025-01-28 19:42:44,621 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,622 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,624 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,624 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,626 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,627 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,629 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,629 - src.masks - ERROR - Неправильно введен номер счёта
+2025-01-28 19:42:44,631 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,631 - src.masks - ERROR - Неправильно введен номер счёта
+2025-01-28 19:42:44,633 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,633 - src.masks - ERROR - Неправильно введен номер счёта
+2025-01-28 19:42:44,635 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,635 - src.masks - ERROR - Неправильно введен номер счёта
+2025-01-28 19:42:44,637 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,637 - src.masks - ERROR - Неправильно введен номер счёта
+2025-01-28 19:42:44,639 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,640 - src.masks - ERROR - Неправильно введен номер счёта
+2025-01-28 19:42:44,728 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,729 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,731 - src.masks - INFO - Начало работы функции get_mask_account
+2025-01-28 19:42:44,732 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,734 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,734 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,736 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,736 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,738 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,738 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,741 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,741 - src.masks - INFO - Функция get_mask_card_number успешно завершила работу
+2025-01-28 19:42:44,743 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,743 - src.masks - ERROR - Неправильно введен номер карты
+2025-01-28 19:42:44,758 - src.masks - INFO - Начало работы функции get_mask_card_number
+2025-01-28 19:42:44,758 - src.masks - ERROR - Неправильно введен номер карты

@@ -1,7 +1,7 @@
 from typing import Generator
 
 
-def filter_by_currency(transactions_list: list, currency: str = "USD") -> Generator[dict | str]:
+def filter_by_currency(transactions_list: list, currency: str = "USD") -> Generator[dict]:
     """ "
     Принимает на вход список словарей, представляющих транзакции,
     возвращает итератор, который поочередно выдает транзакции
@@ -12,14 +12,18 @@ def filter_by_currency(transactions_list: list, currency: str = "USD") -> Genera
     if transactions_list:
 
         for transaction in transactions_list:
-            if "code" not in [transaction["operationAmount"]["currency"], transaction["currency_code"]]:
-                continue
-            if transaction["operationAmount"]["currency"]["code"] == currency:
-                amount_transactions += 1
-                yield transaction
+            if 'currency_code' in transaction:
+                if transaction['currency_code'] == currency:
+                    amount_transactions += 1
+                    yield transaction
+            elif "code"  in transaction["operationAmount"]["currency"]:
+                if transaction["operationAmount"]["currency"]["code"] == currency:
+                    amount_transactions += 1
+                    yield transaction
 
         if amount_transactions == 0:
-            yield "Транзакции в заданной валюте отсутствуют"
+            print("Транзакции в заданной валюте отсутствуют")
+            yield {}
 
     else:
         yield "Пустой список транзакций"

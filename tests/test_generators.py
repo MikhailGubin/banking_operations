@@ -99,7 +99,7 @@ def test_filter_by_no_currency_in_list(transactions_for_generate: list, currency
     заданной валюты
     """
     no_necessary_transaction = filter_by_currency(transactions_for_generate, currency)
-    assert next(no_necessary_transaction) == "Транзакции в заданной валюте отсутствуют"
+    assert next(no_necessary_transaction) == {}
     assert next(no_necessary_transaction) == "Генератор закончил работу"
 
 

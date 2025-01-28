@@ -22,22 +22,24 @@ def get_transaction_by_string(transactions_dicts: List[Dict], string_for_searchi
 
     # Проверяю все вышеперечисленные условия. Если хотя бы одно выполняется, то функция заканчивает работу.
     if wrong_flag:
-        return []
+        return [{}]
 
     required_list_with_dicts = []
 
     for transaction in transactions_dicts:
+
         try:
-            if re.findall(string_for_searching, transaction['state']):
+            if re.findall(string_for_searching, transaction['state'], flags=re.IGNORECASE):
                 required_list_with_dicts.append(transaction)
-            elif re.findall(string_for_searching, transaction['description']):
+            elif re.findall(string_for_searching, transaction['description'], flags=re.IGNORECASE):
                 required_list_with_dicts.append(transaction)
         except Exception as error_message:
             print(f"\nОшибка поиска строки. Сообщение об ошибке:\n{error_message}")
-            return []
+            return [{}]
 
     if not required_list_with_dicts:
         print("\nДанная строка в описании банковских операций не найдена")
+        return [{}]
 
     return required_list_with_dicts
 

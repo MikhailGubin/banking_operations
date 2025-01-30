@@ -19,6 +19,8 @@ def read_csv_file(path_to_file: str) -> List[Dict]:
     try:
         try:
             df_csv_file = pd.read_csv(path_to_file, sep=";")
+            # Заменяю nan на None
+            df_csv_file = df_csv_file.where(pd.notnull(df_csv_file), None)
         except Exception as error_message:
             print(f"\nВозникла ошибка при чтении CSV-файла. Текст ошибки: \n{error_message}")
             return [{}]
@@ -40,6 +42,8 @@ def read_excel_file(path_to_file: str) -> List[Dict]:
     try:
         try:
             df_excel_file = pd.read_excel(path_to_file)
+            # Заменяю nan на None
+            df_excel_file = df_excel_file.where(pd.notnull(df_excel_file), None)
         except Exception as error_message:
             print(f"\nВозникла ошибка при чтении Excel-файла. Текст ошибки: \n{error_message}")
             return [{}]

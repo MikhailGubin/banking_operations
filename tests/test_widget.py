@@ -24,12 +24,12 @@ def test_mask_account_card(account_card_number: str, expected: str) -> None:
 @pytest.mark.parametrize(
     "account_card_number",
     [
-        ("Maestro 159683"),
-        ("Счет 646864736788947795895"),
-        ("Счет 6831982476737658"),
-        ("Visa Classic 64686473678894779589"),
-        ("Visa Platinum "),
-        ("Счет "),
+        "Maestro 159683",
+        "Счет 646864736788947795895",
+        "Счет 6831982476737658",
+        "Visa Classic 64686473678894779589",
+        "Visa Platinum ",
+        "Счет ",
     ],
 )
 def test_mask_account_card_wrong_length(account_card_number: str) -> None:
@@ -46,12 +46,12 @@ def test_mask_account_card_wrong_length(account_card_number: str) -> None:
 @pytest.mark.parametrize(
     "account_card_number",
     [
-        ("1596837868705199 Maestro"),
-        ("64686473678894779589 Счет"),
-        ("MasterCard 71g830d734 26758"),
-        ("Vilsa Classic 6831982476737658"),
-        ("Maestroc 1596837868705199"),
-        ("Счетс 73654108430135874305"),
+        "1596837868705199 Maestro",
+        "64686473678894779589 Счет",
+        "MasterCard 71g830d734 26758",
+        "Vilsa Classic 6831982476737658",
+        "Maestroc 1596837868705199",
+        "Счетс 73654108430135874305",
     ],
 )
 def test_mask_account_card_wrong_format(account_card_number: str) -> None:
@@ -83,13 +83,12 @@ def test_get_date(date_and_time: str, expected: str) -> None:
 @pytest.mark.parametrize(
     "date_and_time",
     [
-        ("2024-03-11T02:26:18"),
-        ("2002-05-21T00:13"),
-        ("2013411-18T07:28:44.568762"),
-        ("2013-11-18L07:28:44.568762"),
-        ("2013-11-18T07:28:44:568762"),
-        ("2013-11:18T07:28:44.568762"),
-        (""),
+        "2024-03-111T02:26:18",
+        "2002-05-21T00:13",
+        "2013-11-18L07:28:44.568762",
+        "2013-11:18T07:28:44.568762",
+        "2013411-18T07:28:44.568762",
+        "",
     ],
 )
 def test_get_empty_date_wrong_format(date_and_time: str) -> None:
